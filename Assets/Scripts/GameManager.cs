@@ -20,6 +20,9 @@ public class GameManager : MonoBehaviour
     public GameObject Player1Text;
     public GameObject Player2Text;
 
+    [Header("Pause Menu")]
+    public GameObject pauseMenu;
+
     private int Player1Score;
     private int Player2Score;
 
@@ -42,5 +45,6 @@ public class GameManager : MonoBehaviour
         ball.GetComponent<Ball>().Reset();
         player1Paddle.GetComponent<Paddle>().Reset();
         player2Paddle.GetComponent<Paddle>().Reset();
+        pauseMenu.GetComponent<PauseMenu>().PauseGame();
     }
 }

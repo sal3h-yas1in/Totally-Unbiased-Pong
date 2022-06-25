@@ -45,7 +45,7 @@ public class Ball : MonoBehaviour
         //   col.collider is the racket's collider
 
         //randomize speed before collision
-        speed = RandFloat(5, 9);
+        speed = RandFloat(7, 9);
 
 
         // Hit the left Racket?
