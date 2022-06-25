@@ -30,7 +30,6 @@ public class Paddle : MonoBehaviour
 
         rb.velocity = new Vector2(rb.velocity.x, movement * speed);
     }
-
     public void Reset()
     {
         rb.velocity = Vector2.zero;
