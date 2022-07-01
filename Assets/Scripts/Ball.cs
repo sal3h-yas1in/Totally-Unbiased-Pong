@@ -9,6 +9,20 @@ public class Ball : MonoBehaviour
     public Rigidbody2D rb;
     public Vector3 startPosition;
 
+    //fix max velocity of ball
+    float maxVelocity = 13;
+    void FixedUpdate()
+    {
+        if (rb.velocity.magnitude > maxVelocity)
+        {
+            rb.drag = 1;
+        }
+        else
+        {
+            rb.drag = 0;
+        }
+    }
+
     //random float generator
     static float RandFloat(float min, float max)
     {
@@ -20,6 +34,7 @@ public class Ball : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        startPosition = transform.position;
         Launch();
     }
 
@@ -48,8 +63,22 @@ public class Ball : MonoBehaviour
         speed = RandFloat(7, 9);
 
 
-        // Hit the left Racket?
+        // Hit the left Racket
         if (col.gameObject.name == "Player1")
+        {
+            // Calculate hit Factor
+            float y = hitFactor(transform.position,
+                                col.transform.position,
+                                col.collider.bounds.size.y);
+
+            // Calculate direction, make length=1 via .normalized
+            Vector2 dir = new Vector2(1, y).normalized;
+
+            // Set Velocity with dir * speed
+            GetComponent<Rigidbody2D>().velocity = dir * speed;
+        }
+
+        if (col.gameObject.name == "AI-Player")
         {
             // Calculate hit Factor
             float y = hitFactor(transform.position,

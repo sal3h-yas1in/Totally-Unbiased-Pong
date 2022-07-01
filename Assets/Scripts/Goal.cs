@@ -13,7 +13,7 @@ public class Goal : MonoBehaviour
             if (!IsPlayer1)
             {
                 Debug.Log("Player1 Scored...");
-                GameObject.Find("Game Manager").GetComponent<GameManager>().Player1Scored(); 
+                GameObject.Find("Game Manager").GetComponent<GameManager>().Player1Scored();
             }
             else
             {
